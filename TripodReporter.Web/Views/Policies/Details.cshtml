@@ -1,0 +1,90 @@
+﻿@model TripodReporter.Domain.Entities.Policy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Policy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Insurer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insurer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PremiumPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PremiumPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comission)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PolicyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
