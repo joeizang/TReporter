@@ -24,7 +24,7 @@ namespace TripodReporter.Domain.Entities
 
         [EnumDataType(typeof(PolicyType))]
         [Display(Name="Policy Type")]
-        public PolicyType PolicyType { get; set; } //Custom Enum that holds the different types of Policies
+        public PolicyType PolicyType { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:d}")]

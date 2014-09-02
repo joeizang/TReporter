@@ -11,17 +11,7 @@ namespace TripodReporter.Domain.Entities
         NewPolicy,
         Renewal,
         OpenCover,
-        Adjustment
-    }
-
-    public enum PolicyType
-    {
-        WorkmensCompensation,
-        Fire,
-        Theft,
-        Burgulary,
-        GroupLife,
-        MarineOpenCover,
-        MotorVehicle
+        Adjustment,
+        Declaration
     }
 }

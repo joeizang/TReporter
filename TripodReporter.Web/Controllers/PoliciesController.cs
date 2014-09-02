@@ -14,10 +14,6 @@ namespace TripodReporter.Web.Controllers
 {
     public class PoliciesController : Controller
     {
-        /// <summary>
-        /// TODO: NEED TO FIGURE OUT WHY THE NAMES OF THE INSURANCE COMPANY AND CLIENT DON'T SHOW ON POLICIES PAGE.+
-        /// Resolved by doing a Join with the LINQ. Also enabled and setup a Migrations
-        /// </summary>
         private IRepository<Policy> repo;
         private IRepository<Client> repo1;
         private IRepository<Insurer> repo2;
