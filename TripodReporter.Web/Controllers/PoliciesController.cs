@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using TripodReporter.Domain.Contexts;
 using TripodReporter.Domain.Entities;
 using TripodReporter.Domain.Repositories;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace TripodReporter.Web.Controllers
 {
@@ -29,8 +31,16 @@ namespace TripodReporter.Web.Controllers
         public ActionResult Index()
         {
             //This line is to include Client & Insurer Table data in Listing Policices
+            //Think of including exception handling for odd errors
             var ToInclude = repo.GetAll().AsQueryable().Include(p => p.Client).Include(p => p.Insurer);
             return View(ToInclude.ToList());
+        }
+
+        public void _ExportToExcel()
+        {
+            //You want to export to excel using this method
+            
+            
         }
 
         // GET: Policies/Details/5

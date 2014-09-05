@@ -23,7 +23,6 @@ namespace TripodReporter.Domain.Contexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //using fluentapi I have confiugred an optional one-to-one relationship between the entities
-            //modelBuilder.Entity<Policy>().HasRequired(p => p.PolicyType).WithRequiredPrincipal(q => q.Policies);
             base.OnModelCreating(modelBuilder);
         }
     }
