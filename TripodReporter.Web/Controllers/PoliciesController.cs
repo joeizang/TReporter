@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using TripodReporter.Domain.Contexts;
 using TripodReporter.Domain.Entities;
 using TripodReporter.Domain.Repositories;
-using Microsoft.Office.Interop.Excel;
+using TripodReporter.Web.Infrastructure;
 
 
 namespace TripodReporter.Web.Controllers
@@ -33,15 +35,44 @@ namespace TripodReporter.Web.Controllers
             //This line is to include Client & Insurer Table data in Listing Policices
             //Think of including exception handling for odd errors
             var ToInclude = repo.GetAll().AsQueryable().Include(p => p.Client).Include(p => p.Insurer);
+            //ToInclude.Where(x => x.PolicyDate.Year == 2014).ToList();
             return View(ToInclude.ToList());
+            //return View(ToInclude.Where(x => x.PolicyDate.Year == 2014).ToList());
         }
 
-        public void _ExportToExcel()
+        public void _ToExcel()
         {
             //You want to export to excel using this method
-            
-            
+            System.Web.UI.WebControls.GridView gv = new System.Web.UI.WebControls.GridView();
+            gv.DataSource = repo.GetAll().AsQueryable().Include(p => p.Client).Include(p => p.Insurer).ToList().Take(5);
+            gv.DataBind();
+            Response.ClearContent();
+            Response.AddHeader("content-dispostion", "attachment;filename=report.xls");
+            Response.ContentType = "application/ms-excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            Response.Write(sw.ToString());
+            //Response.WriteFile()
+            Response.End();
+            RedirectToAction("index");
         }
+
+        [HttpPost]
+        public ExcelResult ExportToExcel()
+        {
+            //created an excelresult type and make the table on screen an excel sheet.
+            System.Web.UI.WebControls.GridView gv = new System.Web.UI.WebControls.GridView();
+            gv.DataSource = repo.GetAll().AsQueryable().Include(p => p.Client).Include(p => p.Insurer).ToList().Take(5);
+            gv.DataBind();
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            return new ExcelResult{
+                stringwriter = sw.ToString()
+            };
+        }
+        
 
         // GET: Policies/Details/5
         public ActionResult Details(int? id)

@@ -10,6 +10,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+@using (@Html.BeginForm("ExportToExcel", "Policies")) { 
+<p>
+    <input type="submit" value="Export Data" class="btn btn-default" />
+</p>
+}
+
 <table class="table">
     <tr>
         <th>
