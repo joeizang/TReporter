@@ -10,7 +10,7 @@ using TripodReporter.Domain.Entities;
 namespace TripodReporter.Domain.Contexts
 {
     /// <summary>
-    /// Derives from DbContext and Sets up all the DbSet Properties for tables?
+    /// Derives from DbContext and Sets up all the DbSet Properties
     /// </summary>
     public class ReporterContext : DbContext
     {
@@ -18,7 +18,7 @@ namespace TripodReporter.Domain.Contexts
         public DbSet<Policy> Policies { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Insurer> Insurers { get; set; }
-        //public DbSet<PolicyType> PolicyTypes { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
